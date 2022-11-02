@@ -105,9 +105,9 @@ school_district_shp <- st_read("./data/raw/school_district/schooldistrict_sy2021
 ## Subset school_district to only NC by state code 37
 nc_school_district_shp <- school_district_shp[which(school_district_shp$STATEFP == 37), ]
 
-## Keep only columns of district name and geometry
-nc_school_district_shp <- nc_school_district_shp[, c(6, 19)]
+## Keep only columns ofgeoid, district name, and geometry
+nc_school_district_shp <- school_district_shp[, c(5, 6, 19)]
 
 #### Write out results ####
-st_write(nc_school_district_shp, "./data/process/nc-nc_school_district.shp", append = FALSE)
+st_write(nc_school_district_shp, "./data/process/nc-school-district.shp", append = FALSE)
 
