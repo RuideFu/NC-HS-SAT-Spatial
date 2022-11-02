@@ -27,7 +27,7 @@ library(tmap)
   ## read in sat data
   nc_sat_21 <- read_csv("./data/process/2021-nc-sat.csv")
   ## read in shapefile
-  nc_county_sf <- st_read("./data/process/nc-county.shp")
+  nc_school_dist_sf <- st_read("./data/process/nc-school-district.shp")
 ```
 
 ### Assess the Data Layers
@@ -35,7 +35,7 @@ library(tmap)
   ## glimpse sat data
   glimpse(nc_sat_21)
   ## glimpse shapefile
-  glimpse(nc_county_sf)
+  glimpse(nc_school_dist_sf)
 ```
 
 The SAT data has `r nrow(nc_sat_21)` rows and `r ncol(nc_sat_21)` columns.
@@ -44,7 +44,7 @@ and `r ncol(nc_county_sf)` columns.
 
 ### Plot a Map
 ```{r plot-map}
-  plot(st_geometry(nc_county_sf))
+  plot(st_geometry(nc_school_dist_sf))
 ```
 
 ### Minor Calculation
@@ -68,3 +68,6 @@ The reason I took the difference rather than directly compare is
 to minimize the effect of round off error.
 And according to my code, there are `r sum_diff` observations 
 show disparity among their data.
+
+
+
