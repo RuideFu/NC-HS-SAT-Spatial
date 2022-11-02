@@ -1,6 +1,6 @@
 data/raw/
 .zip
-.html
+md/*.html
 .DS_Store
 .Rhistory
 .idea
