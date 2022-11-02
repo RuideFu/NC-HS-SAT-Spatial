@@ -1,0 +1,70 @@
+---
+title: "task #3"
+author: "Reed Fu"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_document:
+    theme: darkly
+    highlight: breezedark
+---
+
+```{r setup, include=FALSE}
+## knit option
+knitr::opts_chunk$set(echo = TRUE)
+## load in libraries
+library(tidyverse)
+library(sf)
+library(tmap)
+
+## run prep code 
+## (To make sure everything runs, the setting of evaluate chunks in directory needs to be project)
+# source("./code/data-prep.R")
+```
+
+### Read in Data Layers
+
+```{r readin-data}
+  ## read in sat data
+  nc_sat_21 <- read_csv("./data/process/2021-nc-sat.csv")
+  ## read in shapefile
+  nc_county_sf <- st_read("./data/process/nc-county.shp")
+```
+
+### Assess the Data Layers
+```{r assess-data}
+  ## glimpse sat data
+  glimpse(nc_sat_21)
+  ## glimpse shapefile
+  glimpse(nc_county_sf)
+```
+
+The SAT data has `r nrow(nc_sat_21)` rows and `r ncol(nc_sat_21)` columns.
+While the NC county shapefile has `r nrow(nc_county_sf)` rows 
+and `r ncol(nc_county_sf)` columns.
+
+### Plot a Map
+```{r plot-map}
+  plot(st_geometry(nc_county_sf))
+```
+
+### Minor Calculation
+```{r sum-up}
+  ## Add a new column of average total SAT based on average section scores
+  nc_sat_21$avg_total_by_sum = nc_sat_21$avg_erw + nc_sat_21$avg_math
+  ## the number of observations that the calculated total is different
+  sum_diff <- nrow(filter(nc_sat_21, abs(avg_total_by_sum - avg_total) > 1))
+```
+
+The minor calculation I did is to create 
+a new column of average SAT total scores (`$avg_total_by_sum`)
+by adding up the average reading part (`$avg_erw`) 
+and average math part (`$avg_math`).
+
+This is useful when I calculate `sum_diff`, 
+which is the number of observations 
+that the supplied average total is varied from the calculated average total
+for more than 1.
+The reason I took the difference rather than directly compare is 
+to minimize the effect of round off error.
+And according to my code, there are `r sum_diff` observations 
+show disparity among their data.

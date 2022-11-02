@@ -1,0 +1,329 @@
+district,school,num_tested,percent_tested,avg_total,avg_erw,avg_math
+Alamance-Burlington Schools,Abss Early College At Acc,15,25.4,1207,598,609
+Alamance-Burlington Schools,Eastern Alamance High,55,19.8,1120,558,563
+Alamance-Burlington Schools,Graham High,41,32,912,469,442
+Alamance-Burlington Schools,Hugh M Cummings High,15,8.4,983,500,483
+Alamance-Burlington Schools,Southern Alamance High,49,17.100000000000001,1084,546,538
+Alamance-Burlington Schools,Walter M Williams High,62,23.1,1149,581,568
+Alamance-Burlington Schools,Western Alamance High,100,42.6,1149,570,579
+Alexander County Schools,Alexander Central High,27,10.6,1121,556,566
+Alexander County Schools,Alexander Early College,32,47.8,1131,572,559
+Alleghany County Schools,Alleghany High,10,11,1121,559,562
+Anson County Schools,Anson Co. Early College High,13,17.3,1010,518,492
+Anson County Schools,Anson High School,33,21.9,944,473,471
+Ashe County Schools,Ashe County High,30,16.100000000000001,1080,543,537
+Avery County Schools,Avery County High,15,12,1057,527,530
+Beaufort County Schools,Washington High,34,21.3,1072,540,533
+Bertie County Schools,Bertie High,24,27.6,888,446,441
+Brunswick County Schools,Brunswick County Early College,16,13.3,1178,619,559
+Brunswick County Schools,North Brunswick High,22,9.5,1093,549,544
+Brunswick County Schools,South Brunswick High,33,14.9,1079,549,529
+Brunswick County Schools,West Brunswick High,31,11.8,1083,546,536
+Buncombe County Schools,Reynolds High,70,28.3,1133,571,562
+Buncombe County Schools,Owen High,48,31.2,1118,567,550
+Buncombe County Schools,Erwin High,11,5.4,1083,544,539
+Buncombe County Schools,Enka High,38,20.399999999999999,1109,562,547
+Buncombe County Schools,North Buncombe High,41,18.899999999999999,1141,563,577
+Buncombe County Schools,Roberson High,86,29.5,1180,597,583
+Buncombe County Schools,Nesbitt Discovery Academy,41,48.8,1297,650,647
+Asheville City Schools,Asheville High,93,44.1,1178,605,574
+Asheville City Schools,School Of Inquiry And Life Sci,21,29.6,1248,649,599
+Burke County Schools,Freedom High,10,<5,1071,553,518
+Burke County Schools,Robert L. Patton High School,16,8.1999999999999993,1173,589,583
+Cabarrus County Schools,Cox Mill High School,220,45.9,1166,587,578
+Cabarrus County Schools,Central Cabarrus High,59,17.600000000000001,1090,550,541
+Cabarrus County Schools,Concord High,54,22.7,1156,582,574
+Cabarrus County Schools,Jay M Robinson High,58,21.6,1081,537,544
+Cabarrus County Schools,Mount Pleasant High,30,16,1079,540,539
+Cabarrus County Schools,Northwest Cabarrus High,115,34.4,1118,554,564
+Cabarrus County Schools,Hickory Ridge High,157,37.799999999999997,1131,562,569
+Cabarrus County Schools,Cabarrus Early College Of Tech,15,27.3,1172,581,591
+Cabarrus County Schools,Cabarrus-Kannapolis Early Coll,15,28.3,1149,579,570
+Kannapolis City Schools,A L Brown High,43,13.3,1060,545,515
+Caldwell County Schools,Caldwell Early College,61,42.7,1112,573,539
+Caldwell County Schools,Hibriten High,21,10.199999999999999,1108,555,553
+Caldwell County Schools,South Caldwell High,34,10.8,1075,541,534
+Camden County Schools,Camden County High,18,23.1,1046,538,508
+Carteret County Public Schools,East Carteret High,12,10.6,1207,621,586
+Carteret County Public Schools,Croatan High,54,29,1185,592,593
+Carteret County Public Schools,West Carteret High,37,16.399999999999999,1189,598,591
+Caswell County Schools,Bartlett Yancey High,17,11,1006,513,493
+Catawba County Schools,Bandys High,38,18.399999999999999,1149,571,578
+Catawba County Schools,Bunker Hill High,15,9.3000000000000007,1055,531,524
+Catawba County Schools,Fred T Foard High,39,21,1155,573,582
+Catawba County Schools,Maiden High,44,23.3,1107,552,555
+Catawba County Schools,Saint Stephens High,43,18.399999999999999,1129,565,563
+Hickory City Schools,Hickory High,57,29.2,1108,558,550
+Newton Conover City Schools,Newton-Conover High,18,10.4,1074,542,533
+Newton Conover City Schools,Discovery High School,22,47.8,1100,560,540
+Chatham County Schools,Chatham Central High,14,12.6,1088,541,546
+Chatham County Schools,Northwood High,52,17.8,1129,580,549
+Cherokee County Schools,Andrews High,18,34,971,506,465
+Cherokee County Schools,Murphy High,15,13.9,1112,565,547
+Clay County Schools,Hayesville High,19,23.5,1088,553,535
+Cleveland County Schools,Burns High,33,21,999,505,494
+Cleveland County Schools,Crest High,67,26,1123,570,553
+Cleveland County Schools,Kings Mountain High,36,15.8,1063,534,529
+Cleveland County Schools,Shelby High,36,22.4,1119,579,540
+Columbus County Schools,South Columbus High,20,14.8,1047,527,520
+Columbus County Schools,West Columbus High,22,25.6,1003,506,497
+Whiteville City Schools,Whiteville High,17,13.8,968,493,475
+Craven County Schools,Havelock High,29,13,1086,543,543
+Craven County Schools,New Bern High,72,21,1136,569,567
+Craven County Schools,West Craven High,15,7.5,1064,544,520
+Cumberland County Schools,Jack Britt High,76,17.600000000000001,1164,586,579
+Cumberland County Schools,Cape Fear High,29,10.199999999999999,1156,585,571
+Cumberland County Schools,Gray's Creek High,25,8.3000000000000007,1113,562,551
+Cumberland County Schools,E E Smith High,15,8.4,1053,552,501
+Cumberland County Schools,Pine Forest High,27,8.3000000000000007,1134,571,563
+Cumberland County Schools,South View High,16,<5,939,476,463
+Cumberland County Schools,Terry Sanford High,39,14.9,1089,561,528
+Cumberland County Schools,Westover High,18,8.6,935,466,469
+Currituck County Schools,Currituck County High,34,16,1032,522,509
+Dare County Schools,Cape Hatteras Secondary School,10,21.7,1095,528,567
+Dare County Schools,Manteo High School,48,43.2,1095,541,554
+Dare County Schools,First Flight High School,82,43.4,1143,574,569
+Davidson County Schools,Ledford Senior High,25,13,1154,580,574
+Davidson County Schools,North Davidson High,44,22.7,1114,562,552
+Davidson County Schools,Oak Grove High,33,13.8,1111,557,554
+Davidson County Schools,West Davidson High,10,7.1,1072,525,547
+Lexington City Schools,Lexington Senior High School,17,9.9,1065,542,522
+Davie County Schools,Davie County High,54,16.7,1143,573,570
+Duplin County Schools,East Duplin High,17,8.3000000000000007,1059,542,517
+Duplin County Schools,North Duplin Jr Sr High,15,20.3,1050,551,499
+Durham Public Schools,J D Clement Early College Hs,36,42.9,1153,566,588
+Durham Public Schools,C E Jordan High,65,15.7,1167,590,577
+Durham Public Schools,City Of Medicine Academy,21,29.2,1151,570,581
+Durham Public Schools,Durham School Of The Arts,29,14.1,1219,607,611
+Durham Public Schools,Hillside High,49,15.4,936,478,457
+Durham Public Schools,Middle College Hs @ Dtcc,14,14.1,1199,609,591
+Durham Public Schools,Northern High,34,12.3,1028,518,510
+Durham Public Schools,Riverside High,42,13,1279,637,642
+Durham Public Schools,Southern School Of Energy And,12,5.2,904,457,448
+Edgecombe County Public School,Edgecombe Early College High,12,15.8,1199,613,586
+Edgecombe County Public School,Southwest Edgecombe High,11,6.9,1086,565,522
+Edgecombe County Public School,Tarboro High,21,16.5,920,477,443
+Winston Salem / Forsyth County,Atkins Academic & Tech High,90,39.799999999999997,1221,601,619
+Winston Salem / Forsyth County,Early College Of Forsyth Co,13,21.3,1228,642,586
+Winston Salem / Forsyth County,East Forsyth High,60,16.7,1043,517,526
+Winston Salem / Forsyth County,Robert B Glenn High School,19,6.3,1063,545,517
+Winston Salem / Forsyth County,Mount Tabor High School,114,33.799999999999997,1132,574,558
+Winston Salem / Forsyth County,North Forsyth High,12,5.6,993,487,506
+Winston Salem / Forsyth County,Parkland High,26,8.6,1121,566,555
+Winston Salem / Forsyth County,Ronald W Reagan High School,215,43.8,1183,596,587
+Winston Salem / Forsyth County,R J Reynolds High,114,30.7,1134,577,557
+Winston Salem / Forsyth County,West Forsyth High,198,36.700000000000003,1156,585,571
+Franklin County Schools,Franklinton High,33,13.2,1122,565,557
+Gaston County Schools,Ashbrook High,45,15.3,963,484,480
+Gaston County Schools,Stuart W Cramer High,66,27.7,1082,540,542
+Gaston County Schools,East Gaston High,28,17.8,1085,543,543
+Gaston County Schools,Forestview High,68,29.2,1069,537,533
+Gaston County Schools,Highland Sch Of Technology,59,44.7,1218,615,603
+Gaston County Schools,Hunter Huss High,12,5.7,944,464,480
+Gaston County Schools,North Gaston High,31,13.9,998,499,499
+Gaston County Schools,South Point High,95,41.3,1103,554,549
+Granville County Schools,Granville Central High,11,7.9,981,496,485
+Granville County Schools,Granville Early College High,12,18.8,1187,599,588
+Granville County Schools,J. F. Webb High,11,10,1027,515,513
+Granville County Schools,South Granville High,26,16.899999999999999,1007,516,491
+Greene County Schools,Greene Central High,11,7.2,940,475,465
+Guilford County Schools,T Wingate Andrews High,11,7.7,847,429,418
+Guilford County Schools,James B Dudley High,44,17.5,991,503,488
+Guilford County Schools,Eastern Guilford High,39,15.5,1004,496,508
+Guilford County Schools,Gc Middle College High,20,33.9,1105,577,528
+Guilford County Schools,Penn-Griffin Schools,10,20,1176,588,588
+Guilford County Schools,Grimsley High,192,45.3,1214,605,608
+Guilford County Schools,Early College At Guilford,45,93.8,1452,720,733
+Guilford County Schools,High Point Central High,43,17,1097,551,546
+Guilford County Schools,Northeast Guilford High,21,12.1,955,490,465
+Guilford County Schools,Northern Guilford High,162,54.2,1178,583,595
+Guilford County Schools,Northwest Guilford High,159,34.5,1234,611,624
+Guilford County Schools,Page High,146,36.5,1149,579,570
+Guilford County Schools,Lucy Ragsdale High,62,23.1,1132,569,563
+Guilford County Schools,Ben L. Smith High School,43,17.8,939,472,466
+Guilford County Schools,Academy At Smith,12,24,1034,538,497
+Guilford County Schools,Southeast Guilford High,57,19.100000000000001,1068,541,527
+Guilford County Schools,Southern Guilford High,29,14.1,969,483,486
+Guilford County Schools,Southwest Guilford High,71,20.2,1128,561,566
+Guilford County Schools,Stem Early College @ Nc A&t Su,24,53.3,1320,656,663
+Guilford County Schools,Philip J Weaver Ed Center,26,31.3,1231,640,591
+Guilford County Schools,Western Guilford High,60,21.4,1100,551,549
+Harnett County Schools,Overhills High,29,7.7,1022,520,501
+Harnett County Schools,Triton High,17,6.3,1099,560,539
+Haywood County Schools,Tuscola High,17,7.7,1074,545,529
+Henderson County Schools,East Henderson High,16,8.1999999999999993,1146,594,551
+Henderson County Schools,Hendersonville High,68,36.6,1137,582,555
+Henderson County Schools,North Henderson High,11,<5,1145,573,573
+Henderson County Schools,West Henderson High,66,24.5,1130,573,557
+Hertford County Schools,Hertford County High,35,30.2,879,451,429
+Hertford County Schools,Hertford Co Early College,11,26.8,1016,506,510
+Hoke County Schools,Hoke County High,12,<5,989,515,474
+Iredell-Statesville Schools,Lake Norman High,169,33.299999999999997,1155,573,582
+Iredell-Statesville Schools,North Iredell High,11,6.5,1095,548,547
+Iredell-Statesville Schools,Statesville High,20,9,1011,521,490
+Iredell-Statesville Schools,South Iredell High,80,23.7,1175,588,587
+Mooresville Graded School Dist,Mooresville High School,57,13,1143,565,578
+Jackson County Public Schools,Smoky Mountain High School,26,13.6,1165,587,579
+Johnston County Public Schools,Clayton High,87,19.399999999999999,1065,538,527
+Johnston County Public Schools,Cleveland High,65,18.5,1121,563,558
+Johnston County Public Schools,Corinth Holders High,126,28.7,1145,578,567
+Johnston County Public Schools,Johnston Co Early College Acad,21,26.9,1125,583,542
+Johnston County Public Schools,North Johnston High,17,10.8,1071,525,546
+Johnston County Public Schools,Princeton High,14,9.3000000000000007,1021,505,516
+Johnston County Public Schools,Smithfield-Selma High,51,20.3,992,502,490
+Johnston County Public Schools,South Johnston High,14,<5,1104,564,540
+Johnston County Public Schools,West Johnston High,30,9.6,1135,579,556
+Lee County Schools,Lee County High,29,10.4,1077,543,534
+Lee County Schools,Southern Lee High School,21,8.8000000000000007,1101,549,553
+Lenoir County Public Schools,North Lenoir High,31,19,1086,548,537
+Lenoir County Public Schools,South Lenoir High,16,10.5,1043,526,518
+Lincoln County Schools,East Lincoln High,77,34.700000000000003,1091,554,536
+Lincoln County Schools,Lincolnton High,13,8.4,1111,573,538
+Lincoln County Schools,North Lincoln High,85,36.6,1147,571,576
+Lincoln County Schools,West Lincoln High,34,16.7,1138,575,563
+Macon County Schools,Franklin High,25,13.8,1111,549,562
+Macon County Schools,Highlands School,10,37,1161,594,567
+Mcdowell County Schools,Mcdowell High School,50,16.399999999999999,1079,547,532
+Charlotte-Mecklenburg Schools,Ardrey Kell High School,445,55.1,1231,612,620
+Charlotte-Mecklenburg Schools,William Amos Hough High,227,37.5,1180,591,589
+Charlotte-Mecklenburg Schools,Cato Middle College High Schoo,31,25,1146,575,571
+Charlotte-Mecklenburg Schools,Butler High School,82,19.3,1096,553,543
+Charlotte-Mecklenburg Schools,East Mecklenburg High School,93,23.1,1141,573,568
+Charlotte-Mecklenburg Schools,Garinger High School,24,8.3000000000000007,977,483,494
+Charlotte-Mecklenburg Schools,Harper Middle College High,29,23.6,1230,605,625
+Charlotte-Mecklenburg Schools,Harding University High School,22,8.3000000000000007,925,471,453
+Charlotte-Mecklenburg Schools,Hopewell High School,111,27.5,1066,539,527
+Charlotte-Mecklenburg Schools,Independence High School,44,10.199999999999999,1104,548,556
+Charlotte-Mecklenburg Schools,Levine Middle College High Sch,24,17.399999999999999,1223,621,603
+Charlotte-Mecklenburg Schools,Mallard Creek High School,120,22.9,1056,529,526
+Charlotte-Mecklenburg Schools,Rocky River High School,27,8.9,969,494,476
+Charlotte-Mecklenburg Schools,Myers Park High School,385,48.2,1204,607,597
+Charlotte-Mecklenburg Schools,North Mecklenburg High School,86,19,1046,532,515
+Charlotte-Mecklenburg Schools,Northwest School Of The Arts,29,23.6,1126,579,547
+Charlotte-Mecklenburg Schools,Olympic High School,90,15.8,1072,532,540
+Charlotte-Mecklenburg Schools,Phillip O Berry Academy Of Tec,71,22,1028,524,505
+Charlotte-Mecklenburg Schools,Providence High School,216,49.3,1248,618,631
+Charlotte-Mecklenburg Schools,South Mecklenburg High School,258,41.5,1103,555,548
+Charlotte-Mecklenburg Schools,Char Eng Early College-Uncc,29,29,1244,616,628
+Charlotte-Mecklenburg Schools,West Charlotte High School,23,11.1,901,455,446
+Charlotte-Mecklenburg Schools,West Mecklenburg High School,16,7.8,961,492,469
+Charlotte-Mecklenburg Schools,Williams Secondary Montessori,11,44,1121,580,541
+Charlotte-Mecklenburg Schools,Zebulon B Vance High School,27,6.4,955,483,473
+Charlotte-Mecklenburg Schools,Merancas Middle College-Cpcc,21,21.2,1173,596,577
+Mitchell County Schools,Mitchell High,22,22.2,1027,520,507
+Moore County Schools,Pinecrest High,158,35.200000000000003,1146,579,567
+Moore County Schools,Union Pines High,46,13.9,1177,593,584
+Nash-Rocky Mount Schools,Nash Central High,12,6.9,1059,528,531
+Nash-Rocky Mount Schools,Nrm Early College High School,11,9.1999999999999993,1111,579,532
+Nash-Rocky Mount Schools,Northern Nash High,37,15.7,1001,511,490
+Nash-Rocky Mount Schools,Rocky Mount High,40,15.2,1045,527,517
+Nash-Rocky Mount Schools,Southern Nash High,13,5.3,1093,562,531
+New Hanover County Schools,Emsley A Laney High,87,19,1144,581,563
+New Hanover County Schools,Eugene Ashley High,96,25.3,1131,569,562
+New Hanover County Schools,Isaac M Bear Early College Hig,12,21.4,1273,651,622
+New Hanover County Schools,John T Hoggard High,169,37.700000000000003,1195,593,602
+New Hanover County Schools,New Hanover High,32,10.4,1151,590,560
+New Hanover County Schools,Wilmington Early College High,10,15.6,1126,592,534
+Onslow County Schools,Onslow Early College,30,57.7,1271,639,633
+Onslow County Schools,Dixon High,21,11.4,1090,553,537
+Onslow County Schools,Jacksonville High,46,20.100000000000001,1032,525,507
+Onslow County Schools,Northside High,28,12.3,991,510,481
+Onslow County Schools,Richlands High,25,12.2,1052,541,512
+Onslow County Schools,Southwest High,13,8,1088,559,529
+Onslow County Schools,Swansboro High,43,18.8,1061,529,532
+Onslow County Schools,White Oak High,38,17.7,1092,548,544
+Orange County Schools,Cedar Ridge High,35,15.9,1245,629,616
+Orange County Schools,Orange High,59,19.899999999999999,1186,596,590
+Chapel Hill-Carrboro City Schools,Carrboro High,55,28.8,1276,646,630
+Chapel Hill-Carrboro City Schools,Chapel Hill High,137,35,1327,659,668
+Chapel Hill-Carrboro City Schools,East Chapel Hill High,144,42.7,1326,656,670
+Pamlico County Schools,Pamlico County High,10,12.7,1220,622,598
+Pender County Schools,Heide Trask High,12,7.9,1074,549,525
+Pender County Schools,Pender High,10,8.5,1045,530,515
+Pender County Schools,Topsail High,70,19.2,1168,583,585
+Person County Schools,Person High,30,12.8,1056,530,525
+Pitt County Schools,Ayden-Grifton High,17,12.7,959,482,477
+Pitt County Schools,D H Conley High,60,17.8,1119,553,566
+Pitt County Schools,Junius H Rose High,54,17.399999999999999,1182,581,601
+Pitt County Schools,South Central,33,11.9,1088,551,537
+Polk County Schools,Polk County High School,18,12.8,1137,574,562
+Randolph County School System,Southwestern Randolph High Sch,14,8.1,1076,554,523
+Randolph County School System,Trinity High School,11,7.8,1122,555,566
+Randolph County School System,Wheatmore High School,24,11.9,1083,538,545
+Asheboro City Schools,Asheboro High,66,22.3,1055,530,525
+Richmond County Schools,Richmond Senior High,11,<5,997,502,495
+Public Schools Of Robeson Coun,Lumberton Senior High,36,9.9,1041,534,507
+Public Schools Of Robeson Coun,Purnell Swett High,14,<5,991,504,487
+Rockingham County Schools,Dalton Mcmichael High,19,12.8,1145,571,574
+Rockingham County Schools,John M Morehead High,10,7.9,937,470,467
+Rockingham County Schools,Reidsville High,18,12.8,938,472,467
+Rockingham County Schools,Rockingham County High,41,19.899999999999999,1140,567,573
+Rockingham County Schools,Rockingham Co Early College Hi,10,12,1174,593,581
+Rowan-Salisbury Schools,East Rowan High,38,17,1025,524,501
+Rowan-Salisbury Schools,Carson High,15,<5,1129,572,557
+Rowan-Salisbury Schools,Salisbury High,27,16,1100,539,560
+Rowan-Salisbury Schools,South Rowan High,13,6.7,1075,545,530
+Rutherford County Schools,Chase High School,25,20.5,1077,552,525
+Rutherford County Schools,East Rutherford High School,41,27.9,1026,518,508
+Rutherford County Schools,R-S Central High School,59,38.6,1006,514,492
+Sampson County Schools,Midway High,10,5.3,1184,577,607
+Clinton City Schools,Clinton High,36,24.2,1072,537,536
+Scotland County Schools,Scotland High School,60,19.3,996,501,494
+Scotland County Schools,Scotland Early College High,12,24,1158,593,566
+Stanly County Schools,North Stanly High,28,23.3,1078,546,532
+Stanly County Schools,South Stanly High,17,16.7,995,502,493
+Stanly County Schools,West Stanly High,36,21.3,1079,549,529
+Stokes County Schools,South Stokes High School,20,17.399999999999999,1088,530,558
+Stokes County Schools,West Stokes High School,39,24.7,1127,564,564
+Transylvania County Schools,Brevard High,14,10,1155,591,564
+Transylvania County Schools,Rosman High,22,33.299999999999997,1086,546,540
+Union County Public Schools,Cuthbertson High,215,45.6,1164,575,590
+Union County Public Schools,Porter Ridge High School,76,20.3,1118,563,555
+Union County Public Schools,Parkwood High,46,18,1076,537,539
+Union County Public Schools,Piedmont High,44,15,1134,572,562
+Union County Public Schools,Sun Valley High,87,28.4,1116,561,555
+Union County Public Schools,Central Academy Of Technology,86,41.5,1208,590,617
+Union County Public Schools,Union County Early College,35,28.7,1108,560,548
+Union County Public Schools,Weddington High,230,58.1,1204,594,610
+Union County Public Schools,Marvin Ridge High,276,65.400000000000006,1226,605,621
+Wake County Schools,Apex High,245,51.6,1224,605,618
+Wake County Schools,Apex Friendship High,361,56,1206,604,602
+Wake County Schools,Athens Drive High,220,46.9,1187,595,592
+Wake County Schools,Needham Broughton High,125,27.4,1137,574,564
+Wake County Schools,Cary High,130,28.1,1182,589,593
+Wake County Schools,Crossroads Flex,18,42.9,1199,617,583
+Wake County Schools,East Wake High,34,12.5,1093,556,536
+Wake County Schools,Enloe High,291,54.9,1293,650,644
+Wake County Schools,Fuquay-Varina High,150,27,1126,562,564
+Wake County Schools,Garner High,96,20.9,1075,542,534
+Wake County Schools,Green Hope High,421,68.7,1269,628,641
+Wake County Schools,Heritage High,212,53.1,1164,583,581
+Wake County Schools,Holly Springs High,234,45.8,1136,572,565
+Wake County Schools,Knightdale High,50,14.4,1025,534,492
+Wake County Schools,Leesville Road High,239,41.5,1189,588,601
+Wake County Schools,Middle Creek High,192,44.9,1135,572,563
+Wake County Schools,Millbrook High,211,41.9,1143,577,566
+Wake County Schools,North Wake College And Career,10,13,1136,560,576
+Wake County Schools,Panther Creek High,495,65.7,1269,624,645
+Wake County Schools,Rolesville High,124,27.1,1044,523,521
+Wake County Schools,Sanderson High,109,29.1,1153,578,574
+Wake County Schools,South Garner High,31,11.2,996,504,493
+Wake County Schools,Southeast Raleigh High,48,15.9,1008,506,502
+Wake County Schools,Vernon Malone College And Care,15,19,1113,551,562
+Wake County Schools,Wake Stem Early College High S,26,31,1332,655,678
+Wake County Schools,Wake Early College Of Health A,24,26.4,1208,601,607
+Wake County Schools,Wake Young Men's Leadership Ac,10,31.3,1145,568,577
+Wake County Schools,Wake Young Women's Leadership,24,57.1,1145,580,566
+Wake County Schools,Wake Forest High School,153,30.7,1135,575,561
+Wake County Schools,Wakefield High,147,35.299999999999997,1122,563,559
+Washington County Schools,Washington County High,15,27.3,842,422,420
+Watauga County Schools,Watauga High,73,27.7,1165,584,581
+Wayne County Public Schools,Charles B Aycock High,18,8,1107,563,544
+Wayne County Public Schools,Eastern Wayne High,19,8.6999999999999993,1077,544,534
+Wayne County Public Schools,Wayne School Of Engineering,19,33.299999999999997,1169,592,577
+Wilkes County Schools,Wilkes Central High School,12,7.6,1158,583,575
+Wilson County Schools,Fike High,53,23.7,1029,525,505
+Wilson County Schools,James Hunt High,32,13.7,1000,517,483
+Wilson County Schools,Wilson Early College Academy,10,12.7,1199,611,588
+Yadkin County Schools,Forbush High,12,7.5,1065,536,529
+Yadkin County Schools,Starmount High,31,29.5,1015,508,506

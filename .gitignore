@@ -1,0 +1,7 @@
+data/raw/
+.zip
+.html
+.DS_Store
+.Rhistory
+.idea
+.Rproj.user

@@ -1,0 +1,167 @@
+---
+title: "GEOG215, Final Project"
+author: "Reed Fu"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: darkly
+    highlight: breezedark
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Project Task #1
+
+### Topic
+
+Admission rate of UNC Chapel Hill by county of the North Carolina over the years.
+
+### Interest
+
+As an international student, 
+I always wish to know about the in-state students,
+which takes up 80% of the student body,
+around me. 
+By analyzing the demographic of UNC undergrads and it's correlation with other statistics,
+I could understand the students here from a statistic and spatial geography perspective.
+
+[UNC Class Profile of 2025](https://admissions.unc.edu/explore/our-newest-class/)
+
+UNC undergrad admissions use simple statistics in class profile to portrait an impression on the student body.
+But with more data and detailed analysis, I believe more can be concluded.
+
+[Race as a Factor in Admissions Process](https://www.cnn.com/2021/10/19/us/unc-race-in-admissions-lawsuit/index.html)
+
+Race is one of the factors for UNC to decide who to admit. 
+Using more data we can find out how demographic factors underlie biases and discrimination through admission.
+Hence understand the impact of the selection process to the student body.
+
+### Data
+
+[UNC SDM](https://uncdm.northcarolina.edu/sdm/dictionary.php###)
+
+UNC Student DataMart provides detailed datasets on enrollment with enormous numbers of data fields.
+This database should be enough to provide all the data I needed to illustrate the demography of UNC instate undergrads.
+However, I'm unsure about will I get permission to access the data.
+
+[User Guid](https://uncsystem.sharepoint.com/sites/SDM-StudentDataMart/SitePages/1-Introduction.aspx)
+
+[ncIMPACT](https://ncimpact.sog.unc.edu/our-work/demographics/)
+
+ncIMPACT initiative offers a variety of data and ideas on different aspects of North Carolina demographic.
+By joining with admission data, I might be able to make correlation among student characteristics and social indicators.
+
+## Projecrt Task #2
+### Data Details
+
+******
+
+#### Area of Interest: North Carolina
+#### General Topic of Interest: High School Education
+
+******
+
+#### North Carolina Public School Crime Counts and Rates
+
+* **Website link:** https://www.dpi.nc.gov/data-reports/dropout-and-discipline-data/discipline-alp-and-dropout-annual-reports
+* **Data file link (or explanation):** https://www.dpi.nc.gov/documents/consolidated-reports/table-c8-high-school-crime-counts-and-rates-2020-21/open
+* **Data type:** Tabular (Excel xlsx)
+* **Geographic (observation) units or resolution:** School
+* **Geographic extent:** North Carolina
+* **Time:** 2022-21 School Year, also available since 07-08
+* **General description and notes: ** 
+Thematic data. Includes crime count and Average Daily Membership (Attendance) per year, which can be used to calculate crime rate. May need to join with spatial data.
+
+******
+
+#### 2021 SAT Performance by District and School Among North Carolina Public Schools
+
+* **Website link:** https://www.dpi.nc.gov/2021-sat-performance-district-and-school
+* **Data file link (or explanation):** https://www.dpi.nc.gov/2021-sat-performance-district-and-school/open
+* **Data type:** Tabular (Excel xlsx)
+* **Geographic (observation) units or resolution:** School
+* **Geographic extent:** North Carolina
+* **Time:** 2022-21 School Year
+* **General description and notes: ** 
+Thematic data. Includes number and percent of students who take SAT tests, 
+and their average total and sectional scores.
+Can cross check ADM from the Crime Counts data.
+May need to join with spatial data.
+
+******
+
+#### Student Accounting Data in North Carolina Public Schools
+
+* **Website link:** https://www.dpi.nc.gov/districts-schools/district-operations/financial-and-business-services/demographics-and-finances/student-accounting-data#average-daily-membership-and-membership-last-day-by-lea-adm--mld
+* **Data file link (or explanation):** https://www.dpi.nc.gov/documents/fbs/accounting/2021-22-admmld-finalxlsx/download?attachment
+* **Data type:** Tabular (Excel xlsx)
+* **Geographic (observation) units or resolution:** School
+* **Geographic extent:** North Carolina
+* **Time:** 2022-21 School Year, also available since 16-17
+* **General description and notes: ** 
+Thematic data. Includes Average Daily Membership (ADM) and Membership Last Day (MLD)
+for each public high school in North Carolina by months for all the 9 school months.
+Could be joined with spatial data to illustrate the student distributions.
+Could also be used to cross check ADM or student totals in other thematic data.
+
+******
+
+#### Secondary School Teacher Employment in North Carolina Major Metropolitan or Non Metropolitan Area 
+
+* **Website link:** https://www.bls.gov/oes/current/oes252031.htm
+* **Data file link (or explanation):** https://data.bls.gov/oes/
+* **Data type:** Tabular (Excel xlsx)
+* **Geographic (observation) units or resolution:** Metropolitan or Non Metropolitan Area
+* **Geographic extent:** North Carolina
+* **Time:** 2021 May
+* **General description and notes: ** 
+Thematic data. After providing the following parameters: 
+"One occupation for multiple geographical areas",
+"Secondary School Teachers, Except Special and Career/Techinical Education",
+"Metropolitan or Non Metropolitan Area",
+"All areas in NC",
+"All data types",
+"May 2021",
+"Excel",
+An excel table was created with employment, mean wage, and percentile wage for
+different areas in the state. 
+Could be match with school size data to analyze the student teacher ratio.
+Could be match with spatial data.
+
+******
+
+#### NC Parcels Boundaries
+
+* **Website link:** https://www.lib.ncsu.edu/gis/counties.html https://www.nconemap.gov/pages/parcels
+* **Data file link (or explanation):** https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/nc-parcels-fgdb-most-recent.zip
+* **Data type:** Esri Geodatabase
+* **Geographic (observation) units or resolution:** Standardized Parcel
+* **Geographic extent:** North Carolina
+* **Time:** Ranging from 6+ months to less than 2 months
+* **General description and notes: ** 
+Foundation data.
+Very detailed geographic data of North Carolina, 
+containing resolution from county to land parcel.
+Also a very big file and requires Esri to process.
+Could be used to match educational data, 
+especially specific school information to various levels of resolutions.
+
+******
+
+#### Orange County City Boundaries
+
+* **Website link:** http://orangecountync.gov/2057/Download-GIS-Data
+* **Data file link (or explanation):** https://web.co.orange.nc.us/gisdownloads/city.zip
+* **Data type:** Shapefile
+* **Geographic (observation) units or resolution:** City
+* **Geographic extent:** Orange County
+* **Time:** 9/20/2022  9:55 AM
+* **General description and notes: ** 
+Foundation data.
+Lightweight shapefile of the city boundaries in Orange county.
+Could be used to match educational data to specific cities.
+
+******
+
