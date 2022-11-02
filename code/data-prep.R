@@ -56,6 +56,12 @@ nc_sat_21 <- nc_sat_21[, 2:8] %>% select(district, everything())
 ## Filter observations that are not applicable due to small sample size
 nc_sat_21 <- nc_sat_21 %>% filter(num_tested != "<10")
 
+## Remove pct col
+nc_sat_21$total_erw = as.numeric(nc_sat_21$avg_erw) * as.numeric(nc_sat_21$num_tested)
+nc_sat_21$total_math = as.numeric(nc_sat_21$avg_math) * as.numeric(nc_sat_21$num_tested)
+nc_sat_21$total_num = round(100*as.numeric(nc_sat_21$num_tested)/as.numeric(nc_sat_21$percent_tested))
+nc_sat_21 <- subset(nc_sat_21, select = -c(4, 5, 6, 7))
+
 #### Write out results ####
 write_csv(nc_sat_21, "./data/process/2021-nc-sat.csv")
 

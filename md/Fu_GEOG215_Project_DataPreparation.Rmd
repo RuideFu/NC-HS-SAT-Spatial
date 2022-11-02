@@ -21,6 +21,7 @@ library(tmap)
 # source("./code/data-prep.R")
 ```
 
+******
 ### Read in Data Layers
 
 ```{r readin-data}
@@ -30,6 +31,7 @@ library(tmap)
   nc_school_dist_sf <- st_read("./data/process/nc-school-district.shp")
 ```
 
+******
 ### Assess the Data Layers
 ```{r assess-data}
   ## glimpse sat data
@@ -39,35 +41,69 @@ library(tmap)
 ```
 
 The SAT data has `r nrow(nc_sat_21)` rows and `r ncol(nc_sat_21)` columns.
-While the NC county shapefile has `r nrow(nc_county_sf)` rows 
-and `r ncol(nc_county_sf)` columns.
+While the NC county shapefile has `r nrow(nc_school_dist_sf)` rows
+and `r ncol(nc_school_dist_sf)` columns.
 
+******
 ### Plot a Map
 ```{r plot-map}
   plot(st_geometry(nc_school_dist_sf))
 ```
 
+******
 ### Minor Calculation
 ```{r sum-up}
-  ## Add a new column of average total SAT based on average section scores
-  nc_sat_21$avg_total_by_sum = nc_sat_21$avg_erw + nc_sat_21$avg_math
+  ## Add a new column of total SAT based on sum of sectional scores
+  nc_sat_21$total_score = nc_sat_21$total_erw + nc_sat_21$total_math
+  ## No long applicable as I get rid of pct data
   ## the number of observations that the calculated total is different
-  sum_diff <- nrow(filter(nc_sat_21, abs(avg_total_by_sum - avg_total) > 1))
+  # sum_diff <- nrow(filter(nc_sat_21, abs(avg_total_by_sum - avg_total) > 1))
 ```
 
 The minor calculation I did is to create 
-a new column of average SAT total scores (`$avg_total_by_sum`)
-by adding up the average reading part (`$avg_erw`) 
-and average math part (`$avg_math`).
+a new column of total SAT total scores (`$total_score`)
+by adding up the total reading part (`$total_erw`)
+and total math part (`$total_math`).
 
-This is useful when I calculate `sum_diff`, 
-which is the number of observations 
+This is useful when I calculate `sum_diff`,
+which is the number of observations
 that the supplied average total is varied from the calculated average total
 for more than 1.
-The reason I took the difference rather than directly compare is 
+The reason I took the difference rather than directly compare is
 to minimize the effect of round off error.
-And according to my code, there are `r sum_diff` observations 
+And according to my code, there are `nan` observations
 show disparity among their data.
 
+******
+### Spatialize
 
+```{r spatialize}
 
+# Spatial join
+nc_sat_21_sp <- merge(nc_school_dist_sf, nc_sat_21, by.x = "NAME", by.y = "district")
+
+# Aggregate schools by school district
+nc_sat_21_dist_sp <- aggregate(nc_sat_21_sp[, c(4, 5, 6, 7)], by = list(nc_sat_21_sp$NAME), sum, na.rm=TRUE)
+
+# Calculate average sat score
+nc_sat_21_dist_sp$avg_combined <- round((nc_sat_21_dist_sp$total_math + nc_sat_21_dist_sp$total_erw)
+                                                /nc_sat_21_dist_sp$num_tested)
+
+# Create map
+tm_shape(nc_sat_21_dist_sp) +
+        tm_polygons("avg_combined",
+                    style = "jenks",
+                    palette = "Greens")
+```
+
+******
+#### Interpretation
+
+In the map, the public high school average SAT scores in 21 from North Carolina are displayed per school district.
+To obtain the map, I convert all average SAT score to total sum SAT score,
+then join with spatial data, and aggregate all SAT scores and student counts by sum,
+finally taking the average and plot the map.
+
+The spatial Pattern I see on the map is that in general school district next to a major metropolitan
+performs better. Specifically in the east near Charlotte, in the middle around Triangle,
+and to the west near Wilmington.
