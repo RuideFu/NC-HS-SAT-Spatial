@@ -1,0 +1,153 @@
+---
+title: "Project Task #5, Initial ESDA"
+author: "Reed Fu"
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+html_document:
+theme: darkly
+highlight: breezedark
+---
+
+```{r setup, include=FALSE}
+## knit option
+knitr::opts_chunk$set(echo = TRUE)
+## load in libraries
+library(tidyverse)
+library(sf)
+library(tmap)
+library(kableExtra)
+
+## run prep code
+## (To make sure everything runs, the setting of evaluate chunks in directory needs to be project)
+# source("./code/data-prep.R")
+```
+
+******
+### Read in Data Layers
+
+```{r readin-data, results="hide"}
+## read in sat data
+nc_sat_21 <- read_csv("../data/process/2021-nc-sat.csv")
+## read in shapefile
+nc_school_dist_sf <- st_read("../data/process/nc-school-district.shp")
+```
+
+******
+### Spatialize
+
+```{r spatialize, results="hide"}
+
+# Spatial join
+nc_sat_21_sp <- merge(nc_school_dist_sf, nc_sat_21, by.x = "NAME", by.y = "district", all.x = TRUE)
+
+# Aggregate schools by school district
+nc_sat_21_dist_sp <- aggregate(nc_sat_21_sp[, c(4, 5, 6, 7)], by = list(nc_sat_21_sp$NAME), sum, na.rm=TRUE)
+
+# Calculate average sat score
+nc_sat_21_dist_sp$avg_combined <- round((nc_sat_21_dist_sp$total_math + nc_sat_21_dist_sp$total_erw)
+                                          /nc_sat_21_dist_sp$num_tested)
+
+
+```
+
+******
+### Data Description
+
+
+```{r data-stat-1, eval = TRUE,  echo=FALSE, results="hide"}
+n_obs <- nrow(nc_sat_21_dist_sp)
+n_obs_na <- sum(is.na(nc_sat_21_dist_sp$avg_combined))
+min_cmb_sat <- min(nc_sat_21_dist_sp$avg_combined, na.rm=TRUE)
+max_cmb_sat <- max(nc_sat_21_dist_sp$avg_combined, na.rm=TRUE)
+mean_cmb_sat <- mean(nc_sat_21_dist_sp$avg_combined, na.rm=TRUE)
+sd_cmb_sat <- sd(nc_sat_21_dist_sp$avg_combined, na.rm=TRUE)
+```
+
+
+```{r data-stat-2, warning = FALSE, message = FALSE}
+# Create summary information holder
+summary.table <- tibble(Measure = c("Observations",
+                                    "NA Observations",
+                                    "Minimum",
+                                    "Maximum",
+                                    "Mean",
+                                    "Standard Deviation"),
+                        `Combined SAT Score` = c(n_obs,
+                                                 n_obs_na,
+                                                 min_cmb_sat,
+                                                 max_cmb_sat,
+                                                 mean_cmb_sat,
+                                                 sd_cmb_sat),
+)
+
+## Print nice version of the table
+kable(summary.table,
+      digits = 0,
+      format.args = list(big.mark = ",",
+                         scientific = FALSE,
+                         drop0trailing = TRUE),
+      caption = "Summary of North Carolina Average Combined SAT Score by School District") %>%
+  kable_styling(bootstrap_options = c("striped",
+                                      "hover",
+                                      "condensed",
+                                      "responsive"),
+                full_width = F)
+
+
+```
+
+There are total number of `r n_obs` number of observations,
+out of those, `r n_obs_na` are NA observations.
+The minimum average combined SAT score is `r min_cmb_sat`,
+the maximum average combined SAT score is `r max_cmb_sat`,
+the mean average combined SAT score is `r round(mean_cmb_sat)`, and
+the standard deviation average combined SAT score is `r round(sd_cmb_sat)`.
+
+Comments: Out of all school districts in NC,
+there's quite a few (`r round(n_obs_na/n_obs * 100)`%) that don't have data.
+For those districts that have data, the deviation is quite significant.
+
+******
+### Histogram
+
+```{r histogram}
+ggplot(nc_sat_21_dist_sp,
+       aes(x = avg_combined)) +
+  geom_histogram(binwidth = 15) +
+  xlab("Average Combine SAT Scores in A School District") +
+  ggtitle("Histogram of Public High School SAT Performance")
+```
+
+Comments: The histogram above shows the distribution of
+average combined SAT performance by school district in North Carolina.
+This histogram shows a symmetric and unimodal pattern as most school districts gather around 1130,
+with minor very high and low scoring exceptions.
+
+
+```{r Map-plotting}
+# Create map
+tm_shape(nc_sat_21_dist_sp) +
+  tm_polygons("avg_combined",
+              style = "jenks",
+              palette = "Greens")
+```
+
+Comments:
+The spatial pattern I see on the map is that there are three overall better performed regions.
+Specifically in the east near Charlotte, in the middle around Triangle, and to the west near Wilmington.
+This match my expectation, as more economically well-off school district tends to have more educational resources.
+My hypothesis is that the there's a positive correlation with educational budget in a district with SAT performance.
+
+
+******
+### Summary
+
+I learned that academic performance follows normal distribution very well when there's enough sample size.
+There is a clear median and symmetrical distribution around it.
+However, spatial representation in terms of choropleth map has a pattern
+that there are higher level around metropolitan areas.
+This suggests correlation between SAT performance to other social attributes
+that could not be seen from data themselves.
+The hypotheses I came up is that there the SAT performance might be related to other social factor,
+for example income level or education budget.
+It would be helpful to plot those factors to spatial maps and compare them side by side with SAT data.
