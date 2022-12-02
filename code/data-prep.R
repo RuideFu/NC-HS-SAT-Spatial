@@ -112,7 +112,7 @@ school_district_shp <- st_read("./data/raw/school_district/schooldistrict_sy2021
 nc_school_district_shp <- school_district_shp[which(school_district_shp$STATEFP == 37), ]
 
 ## Keep only columns ofgeoid, district name, and geometry
-nc_school_district_shp <- school_district_shp[, c(5, 6, 19)]
+nc_school_district_shp <- nc_school_district_shp[, c(5, 6, 19)]
 
 #### Write out results ####
 st_write(nc_school_district_shp, "./data/process/nc-school-district.shp", append = FALSE)
