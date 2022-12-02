@@ -1,0 +1,302 @@
+---
+title: "Spatial Distribution of SAT Score of North Carolina in 2021"
+author:
+  - Reed Fu  \newline
+  - GEOG215, Introduction to Spatial Data Science
+date: '`r format(Sys.Date(), "%B %d, %Y")`'
+output:
+  html_document:
+    theme: darkly
+    highlight: breezedark
+    toc: yes
+    toc_float: yes
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+## knit option
+knitr::opts_chunk$set(echo = TRUE)
+## load in libraries
+library(tidyverse)
+library(sf)
+library(sp)
+library(spdep)
+library(tmap)
+library(kableExtra)
+library(cowplot)
+
+## (To make sure everything runs, the setting of evaluate chunks in directory needs to be project)
+```
+
+******
+## Introduction
+
+SAT is a widely used standardized test for college admission, 
+and it's also a reflection of high school students' academic performance.
+Analyzing the spatial pattern of SAT scores across the state 
+provides some insight for understanding the public high school education in North Carolina.
+The research question is: 
+**Does the SAT performance of one school district in North Carolina correlates to its neighbors?**
+To make sure all the code chunks and the data-prep R script run correctly, 
+the knit directory has to be the _project directory_
+
+******
+## Data Preparation
+
+### Sources
+[SAT performance by school district in North Carolina in 2021](https://www.dpi.nc.gov/2021-sat-performance-district-and-school/open)
+contains per school data for 
+the total number of students, number of students who take the exam,
+average score by exam section for all schools in the state of North Carolina in 2021.
+
+The data is available as an Excel file provided by North Carolina Department of Public Instruction.
+The Excel format was hard to deal with, specifically, the cascading layout of school district needs a work around.
+First, I store school district as a separate column, then remove the column from the main table.
+Then, I merge school district name back to the main table using district code.
+
+I also remove all schools that do not belong to a school district. 
+And convert all percentage data into absolute values so it would be easier to sum for later analysis.
+
+
+[North Carolina school district shapefile](https://nces.ed.gov/programs/edge/data/EDGESCHOOLDISTRICT_TL21_SY2021.zip)
+contains school district outlines in the entire country. 
+It is downloaded from National Center for Education Statistics.
+I have to subset the data by state code 37 to only keep school district in North Carolina,
+and keep only the column of geoid, district name, and geometry. 
+
+******
+### Download, Process, and Read-in
+The code chunk below downloads and prepare data for analysis.
+```{r prepare-data, results="hide", message = FALSE, warning = FALSE}
+## run data preparation code
+# source("./code/data-prep-final.R")
+
+## read in sat data
+nc_sat_21 <- read_csv("./data/process/2021-nc-sat.csv", show_col_types = FALSE)
+
+## read in shapefile
+nc_school_dist_sf <- st_read("./data/process/nc-school-district.shp")
+```
+
+******
+### Spatialization
+This code chunk spatializes NC School SAT data with the school district shapefile.
+```{r spatialize, results="hide", message = FALSE, warning = FALSE}
+## Spatial join
+nc_sat_21_sp <- merge(nc_school_dist_sf, nc_sat_21, by.x = "NAME", by.y = "district", all.x = TRUE)
+
+## Aggregate schools by school district
+nc_sat_21_dist_sp <- aggregate(nc_sat_21_sp[, c(4, 5, 6, 7)], by = list(nc_sat_21_sp$NAME), sum, na.rm=TRUE)
+
+## Calculate average sat score
+nc_sat_21_dist_sp$avg_combined <- round((nc_sat_21_dist_sp$total_math + nc_sat_21_dist_sp$total_erw)
+                                          /nc_sat_21_dist_sp$num_tested)
+
+## Calculate average erw score
+nc_sat_21_dist_sp$avg_erw <- round(nc_sat_21_dist_sp$total_erw/nc_sat_21_dist_sp$num_tested)
+
+## Calculate average math score
+nc_sat_21_dist_sp$avg_math <- round(nc_sat_21_dist_sp$total_math/nc_sat_21_dist_sp$num_tested)
+```
+
+******
+## Exploratory Spatial Data Analysis
+
+### Description and Summary
+```{r data-desc-sum-prep, eval = TRUE, results="hide", message = FALSE, warning = FALSE}
+## Calculate summary information
+n_obs <- nrow(nc_sat_21_dist_sp)
+n_obs_na <- sum(is.na(nc_sat_21_dist_sp$avg_combined))
+min_cmb_sat <- min(nc_sat_21_dist_sp$avg_combined, na.rm=TRUE)
+max_cmb_sat <- max(nc_sat_21_dist_sp$avg_combined, na.rm=TRUE)
+mean_cmb_sat <- mean(nc_sat_21_dist_sp$avg_combined, na.rm=TRUE)
+sd_cmb_sat <- sd(nc_sat_21_dist_sp$avg_combined, na.rm=TRUE)
+```
+
+```{r data-desc-sum-kable, warning = FALSE, message = FALSE}
+## Create summary information holder
+summary.table <- tibble(Measure = c("Observations",
+                                    "NA Observations",
+                                    "Minimum",
+                                    "Maximum",
+                                    "Mean",
+                                    "Standard Deviation"),
+                        `Combined SAT Score` = c(n_obs,
+                                                 n_obs_na,
+                                                 min_cmb_sat,
+                                                 max_cmb_sat,
+                                                 mean_cmb_sat,
+                                                 sd_cmb_sat),
+)
+
+## Print nice version of the table
+kable(summary.table,
+      digits = 0,
+      format.args = list(big.mark = ",",
+                         scientific = FALSE,
+                         drop0trailing = TRUE),
+      caption = "Summary of North Carolina Average Combined SAT Score by School District") %>%
+  kable_styling(bootstrap_options = c("striped",
+                                      "hover",
+                                      "condensed",
+                                      "responsive"),
+                full_width = F)
+```
+
+Out of all school districts in NC,
+there's a few (`r round(n_obs_na/n_obs * 100)`%) that don't have data.
+For those districts that have data, the deviation is quite significant.
+
+*****
+### Histogram
+```{r data-desc-sum-hist, warning = FALSE, message = FALSE}
+## Make a histogram of average combined score with bin-width 15
+ggplot(nc_sat_21_dist_sp,
+       aes(x = avg_combined)) +
+  geom_histogram(binwidth = 15) +
+  xlab("Average Combine SAT Scores in A School District") +
+  ggtitle("Histogram of Public High School SAT Performance")
+```
+
+The histogram above shows the distribution of
+average combined SAT performance by school district in North Carolina.
+This histogram shows a symmetric and uni-modal pattern as most school districts gather around 1130,
+with minor very high and low scoring exceptions.
+
+
+******
+## Geographic Distribution and Spatial Clustering
+### Data Validation
+```{r validation, results="hide", message = FALSE, warning = FALSE}
+## Subset data to remove NA regions
+nc_sat_21_dist_sp <- nc_sat_21_dist_sp[which(!is.na(nc_sat_21_dist_sp$avg_combined)), ]
+
+## Check if all features are valid
+valid_features <- sum(st_is_valid(nc_sat_21_dist_sp))
+
+## Use an "if" statement to make valid, but ONLY IF NECESSARY
+if (valid_features < nrow(nc_sat_21_dist_sp)) nc_sat_21_dist_sp <- st_make_valid(nc_sat_21_dist_sp)
+```
+
+******
+### Data Mapping
+```{r quick-map, message = FALSE, warning = FALSE}
+## Tells tmap to create an interactive map
+tmap_mode("view")
+
+## Linked, side-by-side maps of SAT Reading-Writing and SAT math
+tm_shape(nc_sat_21_dist_sp) +
+  tm_basemap("CartoDB.PositronNoLabels") +
+  tm_polygons(c("avg_erw", 
+                "avg_math"), 
+              style = "quantile", 
+              border.col = "black", 
+              border.alpha = 0.25) +
+  tm_facets(sync = TRUE, 
+            ncol = 2)
+```
+
+Both maps share similar patterns as there's a high scoring cluster to the south-west of the state near Charlotte,
+and there's a low scoring cluster to the north-east.
+
+******
+### Moran's I
+```{r morans-I, message = FALSE, warning = FALSE}
+## Create Queen case neighbors
+nc_sat_21_dist_sp_queen <- poly2nb(nc_sat_21_dist_sp, 
+                       queen = TRUE)
+
+## Convert the neighbors to weight matrix
+nc_sat_21_dist_sp_weights <- nb2listw(nc_sat_21_dist_sp_queen, 
+                          style = "B",         # B is binary (1,0)
+                          zero.policy = TRUE)  # zero.policy allows for observations with NO neighbors 
+
+## Moran's I
+nc_sat_21_avg_combined_moran <- 
+  moran.test(nc_sat_21_dist_sp$avg_combined,  # The column in your sp data
+             nc_sat_21_dist_sp_weights,       # Weights object
+             zero.policy = TRUE,              # Allows for observations with NO neighbors
+             randomisation = TRUE)            # Compares to randomized NULL data
+
+## Print summary to screen
+nc_sat_21_avg_combined_moran
+```
+
+Moran's I analysis has a p-value of `r nc_sat_21_avg_combined_moran$p.value`,
+which is very close to 0. 
+The magnitude of Moran's I is `r nc_sat_21_avg_combined_moran$estimate['Moran I statistic']`,
+which is also very close to 0.
+Hence, the spatial correlation to it's neighbors are basically random.
+
+******
+### LISA
+```{r LISA-calc, message = FALSE, warning = FALSE}
+## LISA -- Local Moran's I
+nc_sat_21_avg_combined_lisa <- 
+  localmoran(nc_sat_21_dist_sp$avg_combined, # The column in your sp data 
+             nc_sat_21_dist_sp_weights,      # Weights object
+             zero.policy = TRUE) %>%         # Best to keep TRUE for LISA
+  as.data.frame()  # Make result into data frame
+
+## Scale the input data to deviation from mean
+cDV <- nc_sat_21_dist_sp$avg_combined - mean(nc_sat_21_dist_sp$avg_combined)
+
+## Get spatial lag values for each observation
+## These are the neighbors' values!
+lagDV <- lag.listw(nc_sat_21_dist_sp_weights, nc_sat_21_dist_sp$avg_combined)
+
+## Scale the lag values to deviation from mean
+clagDV <- lagDV - mean(lagDV, na.rm = TRUE)
+
+## Add holder column with all 0s
+nc_sat_21_avg_combined_lisa$Cat <- rep("0", nrow(nc_sat_21_avg_combined_lisa))
+
+
+## This simply adds a label based on the values
+nc_sat_21_avg_combined_lisa$Cat[which(cDV > 0 & clagDV > 0 & nc_sat_21_avg_combined_lisa[,5] < 0.05)] <- "HH" 
+nc_sat_21_avg_combined_lisa$Cat[which(cDV < 0 & clagDV < 0 & nc_sat_21_avg_combined_lisa[,5] < 0.05)] <- "LL"      
+nc_sat_21_avg_combined_lisa$Cat[which(cDV < 0 & clagDV > 0 & nc_sat_21_avg_combined_lisa[,5] < 0.05)] <- "LH"
+nc_sat_21_avg_combined_lisa$Cat[which(cDV > 0 & clagDV < 0 & nc_sat_21_avg_combined_lisa[,5] < 0.05)] <- "HL"
+
+```
+
+```{r LISA-mapping, message = FALSE, warning = FALSE}
+nc_sat_21_dist_sp$LISACAT <- nc_sat_21_avg_combined_lisa$Cat
+
+## Tells tmap to create an interactive map
+tmap_mode("view")
+
+## Make a LISA map
+tm_shape(nc_sat_21_dist_sp) + 
+  tm_polygons("LISACAT", 
+              style = "cat", 
+              palette = c("grey",        # 0 (not significant)
+                          "red",         # HH
+                          "pink",        # HL
+                          "lightblue",   # LH
+                          "blue"),       # LL
+              border.col = "Black", 
+              border.alpha = 0.25) +
+  tm_layout(legend.outside = TRUE) + 
+  tm_basemap("CartoDB.PositronNoLabels")
+```
+
+Most school districts in North Carolina don't have spatial association that is significant enough.
+The ones that show spatial association are entirely LL, which suggests there's a SAT performance swamp in the north-west of the state.
+The cause of the cold spots could be further explored by comparing to other social factors.
+
+******
+## Conclusion
+
+To sum up, there's hardly any spatial correlation of SAT performance of a school district in North Carolina to its neighbors. Both the numerical distribution and spatial distribution are close to random. However, there's several school districts that under perform compared to the rest of the state. More research could be done to investigate the social factors that might cause the cold spot.
+
+******
+#### Word Count
+```{r word-count, echo = FALSE, message = FALSE}
+wordcountaddin:::text_stats("./md/report.Rmd") %>% 
+  kable_styling(bootstrap_options = c("striped", 
+                                      "hover", 
+                                      "condensed", 
+                                      "responsive"), 
+                full_width = F)
+```
